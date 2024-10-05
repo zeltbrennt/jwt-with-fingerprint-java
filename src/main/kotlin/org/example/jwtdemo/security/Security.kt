@@ -49,7 +49,7 @@ class JwtAuthenticationFilter : OncePerRequestFilter() {
 
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain) {
         val token = request.getHeader("Authorization")
-        val cookie = request.cookies.find { it.name == "fingerprint" }
+        val cookie = request.cookies?.find { it.name == "fingerprint" }
         logger.info("Token: $token")
         logger.info("Cookie: ${cookie?.value ?: "null"}")
         if (token != null && cookie != null && token.startsWith("Bearer ")) {
