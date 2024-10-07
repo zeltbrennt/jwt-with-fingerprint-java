@@ -43,7 +43,8 @@ class RestController {
     }
     
     @GetMapping("/echo")
-    fun echo(@RequestParam value: String): ResponseEntity<String> {
-        return ResponseEntity("$value", HttpStatus.OK)
+    fun echo(@RequestParam value: String, response: HttpServletResponse) {
+        val why = value
+        response.sendRedirect("/")
     }
 }

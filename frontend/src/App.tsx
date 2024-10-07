@@ -3,26 +3,28 @@ import {FormEvent, useEffect, useState} from "react";
 
 export default function App() {
 
-    const [user, setUser] = useState('')
-    const [password, setPassword] = useState('')
     const [loginError, setLoginError] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem("accessToken") || false)
     const [secret, setSecret] = useState('')
     const [secretRevealed, setSecretRevealed] = useState(false)
     const [secretError, setSecretError] = useState(false)
 
-    const handleSubmit = async (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        const form = e.currentTarget
+        const elements = form.elements as typeof form.elements & {
+            user: HTMLInputElement,
+            password: HTMLInputElement,
+        }
         const response = await fetch('http://localhost:8080/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user: user,
-                password: password
-            }),
-            credentials: 'include'
+                user: elements.user.value,
+                password: elements.password.value
+            })
         }).then(response => {
             response.ok ? setLoginError(false) : setLoginError(true)
             return response.json()
@@ -74,13 +76,13 @@ export default function App() {
 
                             <TextField
                                 label={"Username"}
-                                error={loginError}
-                                onChange={(e) => setUser(e.target.value)}/>
+                                name={"user"}
+                                error={loginError}/>
                             <TextField
                                 label={"Password"}
+                                name={"password"}
                                 error={loginError}
-                                type={"password"}
-                                onChange={(e) => setPassword(e.target.value)}/>
+                                type={"password"}/>
                             <Button
                                 variant={"contained"}
                                 type={"submit"}>Login</Button>
