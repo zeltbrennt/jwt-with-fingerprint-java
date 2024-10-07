@@ -1,4 +1,4 @@
 ###
 GET http://localhost:8080/secret
-Authorization: Bearer ...
-Cookie: fingerprint=...
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6Imp3dGRlbW8iLCJpYXQiOjE3MjgyODgyMDYsImV4cCI6MTcyODI5MTgwNiwiZnB0IjoiZmY1YmUxZmY2MWM5OGU5NmQ4ZTMxYzc1ODMyNWZhMjU3NzlkNjRlYmIyYjM4MWMyNTk4ODI1ZTkwMmQ0N2ExNSJ9.eAqtfA_PMx3VagqueBwnA1vDAYCI1l9QVL-bR_qbwNA
+Cookie: fingerprint=07c6f5dbc2804d4ffc3eb91e841b6c86d4b76605b73cd28cecf9c265a6418c61
