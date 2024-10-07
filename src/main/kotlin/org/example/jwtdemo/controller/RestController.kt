@@ -14,6 +14,7 @@ import org.example.jwtdemo.model.TokenDto
 import org.example.jwtdemo.model.isValid
 import org.example.jwtdemo.security.util.generateJwt
 import org.example.jwtdemo.security.util.generateRandomFingerprint
+import org.springframework.web.bind.annotation.RequestParam
 
 @RestController
 class RestController {
@@ -39,5 +40,10 @@ class RestController {
     @GetMapping("/secret")
     fun secret(): ResponseEntity<SecretDto> {
         return ResponseEntity(SecretDto("True value of Pi", "3"), HttpStatus.OK)
+    }
+    
+    @GetMapping("/echo")
+    fun echo(@RequestParam value: String): ResponseEntity<String> {
+        return ResponseEntity("$value", HttpStatus.OK)
     }
 }

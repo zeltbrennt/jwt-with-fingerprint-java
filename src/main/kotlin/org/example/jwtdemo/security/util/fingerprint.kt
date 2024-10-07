@@ -2,9 +2,10 @@ package org.example.jwtdemo.security.util
 
 import org.example.jwtdemo.model.Fingerprint
 import java.security.MessageDigest
+import java.security.SecureRandom
 
 fun generateRandomFingerprint(): Fingerprint {
-    val random = java.util.Random()
+    val random = SecureRandom()
     val raw = ByteArray(32)
     random.nextBytes(raw)
     val md = MessageDigest.getInstance("SHA-256")
