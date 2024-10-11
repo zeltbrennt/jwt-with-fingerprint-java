@@ -6,7 +6,7 @@ import java.security.SecureRandom
 
 fun generateRandomFingerprint(): Fingerprint {
     val random = SecureRandom()
-    val raw = ByteArray(32)
+    val raw = ByteArray(64)
     random.nextBytes(raw)
     val md = MessageDigest.getInstance("SHA-256")
     val hash = md.digest(raw).joinToString("") { "%02x".format(it) }

